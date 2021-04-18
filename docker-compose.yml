@@ -8,6 +8,17 @@ services:
     ports:
       - "5000:5000"
     env_file: .env
+    depends_on: 
+      - db
     volumes:
       - ./apiusers/opt/apiusers
     command: yarn start
+
+  db:
+    image: bitnami/postgresql:latest
+    env_file: .env
+    networks:
+      - app-tier
+    ports:
+      - "1111:5432"
+  

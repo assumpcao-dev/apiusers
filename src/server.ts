@@ -1,10 +1,13 @@
 import'reflect-metadata';
 import express, { Request, Response, NextFunction } from 'express';
 import 'dotenv/config';
+import {usersRouter} from './routes/user.routes';
 import AppError from './shared/errors/AppError';
 
 
 const app = express();
+
+app.use(usersRouter)
 
 
 app.use((error: Error, request: Request, response: Response, next: NextFunction) => {
